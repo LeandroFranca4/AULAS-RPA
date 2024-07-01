@@ -32,6 +32,7 @@ pyautogui.press('tab')
 pyautogui.press('tab')
 pyautogui.press('tab')
 pyautogui.press('tab')
+
 pyautogui.press('tab')
 pyautogui.press('down')
 pyautogui.press('down')
