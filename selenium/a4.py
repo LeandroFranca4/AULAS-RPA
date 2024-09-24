@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from time import sleep
 
 chrome_options= Options()
 
@@ -39,25 +40,17 @@ driver = webdriver.Chrome( options=chrome_options)
 # Navegar até um site
 driver.get('https://cursoautomacao.netlify.app/')
 
-'''driver.find_element(By.NAME, '')
-driver.find_element(By.ID, '')
-driver.find_element(By.LINK_TEXT, '')
-driver.find_element(By.CLASS_NAME, '')'''
-botao = driver.find_element(By.XPATH, '/html/body/section[2]/div/div[1]')
+driver.find_element(By.XPATH, '//*[@id="navbarsExample04"]/ul[2]/li[3]/a').click()
 
-if botao.is_enabled():
-    print('')
+driver.find_element(By.XPATH, '//*[@id="email"]').click()
+driver.find_element(By.XPATH, '//*[@id="email"]').send_keys('leandro24798@gmail.com')
 
-if botao.is_enabled() == False:
-    print('belezaa')
+
+
+driver.find_element(By.XPATH, '//*[@id="senha"]').click()
+driver.find_element(By.XPATH, '//*[@id="senha"]').send_keys('pintomole')
+
+driver.find_element(By.XPATH, '/html/body/section/form/div/button').click()
 
 input('')
 driver.close()
-
-
-
-
-
-
-
-

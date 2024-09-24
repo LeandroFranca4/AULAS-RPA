@@ -1,6 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from time import sleep
+from random import randint
+from selenium.webdriver.support.select import Select
 
 chrome_options= Options()
 
@@ -34,30 +37,24 @@ chrome_options.add_experimental_option('prefs', {
     'profile.default_content_setting_values.automatic_downloads': 1,
 
 })
-# inicializando o webdriver
+# inicializando o webdriverS
 driver = webdriver.Chrome( options=chrome_options)
 # Navegar até um site
-driver.get('https://cursoautomacao.netlify.app/')
 
-'''driver.find_element(By.NAME, '')
-driver.find_element(By.ID, '')
-driver.find_element(By.LINK_TEXT, '')
-driver.find_element(By.CLASS_NAME, '')'''
-botao = driver.find_element(By.XPATH, '/html/body/section[2]/div/div[1]')
+driver.get('https://cursoautomacao.netlify.app/desafios')
 
-if botao.is_enabled():
-    print('')
+driver.execute_script('window.scrollTo(0,2200)')
+sleep(1)
 
-if botao.is_enabled() == False:
-    print('belezaa')
+paises= driver.find_element(By.XPATH, '//*[@id="paisesselect"]')
+
+opcao=Select(paises)
+
+opcao.select_by_visible_text('Estados Unidos')
+opcao.select_by_visible_text('Africa')
+opcao.select_by_visible_text('Chille')
+ 
+
 
 input('')
 driver.close()
-
-
-
-
-
-
-
-

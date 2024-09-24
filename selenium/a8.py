@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from time import sleep
+from random import randint
 
 chrome_options= Options()
 
@@ -37,27 +39,20 @@ chrome_options.add_experimental_option('prefs', {
 # inicializando o webdriver
 driver = webdriver.Chrome( options=chrome_options)
 # Navegar até um site
+
 driver.get('https://cursoautomacao.netlify.app/')
 
-'''driver.find_element(By.NAME, '')
-driver.find_element(By.ID, '')
-driver.find_element(By.LINK_TEXT, '')
-driver.find_element(By.CLASS_NAME, '')'''
-botao = driver.find_element(By.XPATH, '/html/body/section[2]/div/div[1]')
+driver.execute_script('window.scrollTo(0,400)')
+def pausa_texto(texto,elemento):
+    for letra in texto:
+        elemento.send_keys(letra)
+        sleep(randint(1,5)/30)
+sleep(2)
 
-if botao.is_enabled():
-    print('')
-
-if botao.is_enabled() == False:
-    print('belezaa')
+paragrafo=driver.find_element(By.XPATH, '/html/body/section[2]/div/div[4]/textarea')
+paragrafo.click()
+texto='oi  eu tenho uma namorada e um emprego, gostaria de ganhar mais dinheiro para comprar um civic e poder viajar aos finais de semana com ela. ponto final !'
+pausa_texto(texto, paragrafo )
 
 input('')
 driver.close()
-
-
-
-
-
-
-
-

@@ -1,6 +1,8 @@
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from time import sleep
 
 chrome_options= Options()
 
@@ -37,27 +39,17 @@ chrome_options.add_experimental_option('prefs', {
 # inicializando o webdriver
 driver = webdriver.Chrome( options=chrome_options)
 # Navegar até um site
-driver.get('https://cursoautomacao.netlify.app/')
+driver.get('https://cursoautomacao.netlify.app/desafios')
 
-'''driver.find_element(By.NAME, '')
-driver.find_element(By.ID, '')
-driver.find_element(By.LINK_TEXT, '')
-driver.find_element(By.CLASS_NAME, '')'''
-botao = driver.find_element(By.XPATH, '/html/body/section[2]/div/div[1]')
+driver.execute_script("window.scrollTo(0,550)")
+sleep(2)
+driver.find_element(By.XPATH, '//*[@id="conversivelcheckbox"]').click()
+driver.find_element(By.XPATH, '//*[@id="offroadcheckbox"]').click()
 
-if botao.is_enabled():
-    print('')
 
-if botao.is_enabled() == False:
-    print('belezaa')
+
 
 input('')
 driver.close()
-
-
-
-
-
-
 
 
